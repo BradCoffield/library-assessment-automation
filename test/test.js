@@ -3,6 +3,7 @@ const {
   iterateObject,
   addArrayValues,
   sumScoresAcrossOutcome,
+  getNameAndScores,
 } = require("../index");
 const csvFilePath = "./csv/Spring2021 - Library Prestest - ENG119Reynolds.csv";
 
@@ -46,4 +47,16 @@ describe("iterateObject Testing", () => {
         assert.isNotOk(iterateObject(undefined))
         assert.isNotOk(iterateObject(null))
     });
+});
+
+
+describe("getNameAndScores Testing", () => {
+  it("should fail with not an object", () => {
+      assert.isNotOk(getNameAndScores(true))
+         assert.isNotOk(getNameAndScores(false));
+         assert.isNotOk(getNameAndScores(true));
+         assert.isNotOk(getNameAndScores("cats!"));
+         assert.isNotOk(getNameAndScores(undefined));
+         assert.isNotOk(getNameAndScores(null));
+  });
 });

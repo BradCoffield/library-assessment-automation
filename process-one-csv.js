@@ -1,3 +1,8 @@
+/* 
+This was my original file that I got working to process one CSV. Need a file that will take two CSV and make sure only tallying scores from students that appear in both.
+*/
+
+
 // const csvFilePath = "./see-es-vees/Spring2021 - Library Post-test - ENG119Reynolds.csv";
 const csvFilePath = "./csv/Spring2021 - Library Prestest - ENG119Reynolds.csv";
 
