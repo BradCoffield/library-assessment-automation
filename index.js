@@ -1,6 +1,5 @@
 // const csvFilePath = "./see-es-vees/Spring2021 - Library Post-test - ENG119Reynolds.csv";
-const csvFilePath =
-  "./see-es-vees/Spring2021 - Library Prestest - ENG119Reynolds.csv";
+const csvFilePath = "./csv/Spring2021 - Library Prestest - ENG119Reynolds.csv";
 
 const csv = require("csvtojson");
 
@@ -10,6 +9,7 @@ const scoresArray = [];
 // So, this will iterate over JSON to find nested keys and let me do something with them
 // Currently, valIWant is either a 1 or 0 to represent correct or incorrect.
 function iterateObject(obj) {
+  console.log(obj);
   for (prop in obj) {
     if (typeof obj[prop] == "object") {
       iterateObject(obj[prop]);
@@ -77,14 +77,26 @@ function getNameAndScores(obj) {
 
 function addArrayValues(arr) {
   let total = 0;
-  arr.forEach((i) => (total += i));
+
+  arr.forEach((i) => {
+    if (typeof i === "number") {
+      total += i;
+    }  else total = false; 
+  });
+
   return total;
 }
 
 function sumScoresAcrossOutcome(arr, outcome) {
-  let total = 0;
+  let total = null;
   arr.forEach((i) => {
-    total += i[outcome];
+     
+    if (typeof i[outcome] === "number" ) {
+     total += i[outcome];
+    }
+    else {return false}
   });
   return total;
 }
+
+module.exports = { iterateObject, addArrayValues, sumScoresAcrossOutcome };
