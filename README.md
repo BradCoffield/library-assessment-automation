@@ -1,2 +1,3 @@
-# library-assessment-automation
-Scripting to improve the library assessment process at RMC.
+# Library Assessment Automation
+
+Taking CSVs from Google Forms and analyzing them based on our assessment needs. 
