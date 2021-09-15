@@ -1,10 +1,10 @@
 module.exports = async (rawData, whichTest) => {
   const scoresArray = [];
   const arrayOfStudents = [];
-  const OutcomeOneRange = { begin: 0, end: 4 };
-  const OutcomeTwoRange = { begin: 4, end: 8 };
-  const OutcomeThreeRange = { begin: 8, end: 13 };
-  const OutcomeFourRange = { begin: 13, end: 15 };
+  const OutcomeOneRange = { begin: 0, end: 4, totalQuestionsInRange: 4 };
+  const OutcomeTwoRange = { begin: 4, end: 8, totalQuestionsInRange: 4 };
+  const OutcomeThreeRange = { begin: 8, end: 13, totalQuestionsInRange: 5 };
+  const OutcomeFourRange = { begin: 13, end: 15, totalQuestionsInRange: 2 };
 
   const getNameAndScores = (obj) => {
     if (obj == undefined) {
@@ -36,14 +36,11 @@ module.exports = async (rawData, whichTest) => {
       if (typeof obj[prop] == "object") {
         iterateObject(obj[prop]);
       } else {
-          if (prop.substr(-7) == "[Score]" && obj[prop].charAt(0) != "-") {
-            // console.log(obj[prop].charAt(0));
-            
-             scoresArray.push(parseFloat(obj[prop].charAt(0)));
-          }
+        if (prop.substr(-7) == "[Score]" && obj[prop].charAt(0) != "-") {
+          scoresArray.push(parseFloat(obj[prop].charAt(0)));
+        }
         if (prop == "Score") {
-          const valIWant = obj["Score"].charAt(0);
-          scoresArray.push(parseFloat(valIWant));
+          scoresArray.push(parseFloat(obj["Score"].charAt(0)));
         }
       }
     }
@@ -76,7 +73,7 @@ module.exports = async (rawData, whichTest) => {
   /* Starting Things */
   rawData.forEach((i) => getNameAndScores(i));
 
-  const possiblePoints = arrayOfStudents.length * 5;
+  //   const possiblePoints = arrayOfStudents.length * 5;
   const sumOutcomeOne = sumScoresAcrossOutcome(arrayOfStudents, "OutcomeOne");
   const sumOutcomeTwo = sumScoresAcrossOutcome(arrayOfStudents, "OutcomeTwo");
   const sumOutcomeThree = sumScoresAcrossOutcome(
@@ -87,23 +84,36 @@ module.exports = async (rawData, whichTest) => {
   console.log(`\n${whichTest}:`);
   console.log("Number of students = ", arrayOfStudents.length, "");
   console.log(
-    `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${possiblePoints} | Percentage ${
-      sumOutcomeOne / possiblePoints
+    `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${
+      arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange
+    } | Percentage ${
+      sumOutcomeOne /
+      (arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange)
     }  `
   );
   console.log(
-    `OutcomeTwo: ${sumOutcomeTwo} | Out of a possible: ${possiblePoints} | Percentage ${
-      sumOutcomeTwo / possiblePoints
+    `OutcomeTwo: ${sumOutcomeTwo} | Out of a possible: ${
+      arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange
+    } | Percentage ${
+      sumOutcomeTwo /
+      (arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange)
+    }  `
+  );
+
+  console.log(
+    `OutcomeThree: ${sumOutcomeThree} | Out of a possible: ${
+      arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange
+    } | Percentage ${
+      sumOutcomeThree /
+      (arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange)
     }  `
   );
   console.log(
-    `OutcomeThree: ${sumOutcomeThree} | Out of a possible: ${possiblePoints} | Percentage ${
-      sumOutcomeThree / possiblePoints
-    }  `
-  );
-  console.log(
-    `OutcomeFour: ${sumOutcomeFour} | Out of a possible: ${possiblePoints} | Percentage ${
-      sumOutcomeFour / possiblePoints
+    `OutcomeFour: ${sumOutcomeFour} | Out of a possible: ${
+      arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange
+    } | Percentage ${
+      sumOutcomeFour /
+      (arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange)
     }  `
   );
 };
