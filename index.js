@@ -2,7 +2,9 @@
   const preparingTheData = require("./preparing-the-data");
   const tallyScores = require("./tally-scores");
 
-  // Our source files
+  /* 
+      Our source test results
+  */
   const preTestCSV = "./csv/Spring2021 - Library Prestest - ENG119Reynolds.csv";
   const postTestCSV =
     "./csv/Spring2021 - Library Post-test - ENG119Reynolds.csv";
