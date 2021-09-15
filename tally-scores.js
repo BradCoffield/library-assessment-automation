@@ -1,10 +1,10 @@
 module.exports = async (rawData, whichTest) => {
   const scoresArray = [];
   const arrayOfStudents = [];
-  const OutcomeOneRange = { begin: 0, end: 5 };
-  const OutcomeTwoRange = { begin: 5, end: 10 };
-  const OutcomeThreeRange = { begin: 10, end: 15 };
-  const OutcomeFourRange = { begin: 15, end: 20 };
+  const OutcomeOneRange = { begin: 0, end: 4 };
+  const OutcomeTwoRange = { begin: 4, end: 8 };
+  const OutcomeThreeRange = { begin: 8, end: 13 };
+  const OutcomeFourRange = { begin: 13, end: 15 };
 
   const getNameAndScores = (obj) => {
     if (obj == undefined) {
@@ -36,6 +36,11 @@ module.exports = async (rawData, whichTest) => {
       if (typeof obj[prop] == "object") {
         iterateObject(obj[prop]);
       } else {
+          if (prop.substr(-7) == "[Score]" && obj[prop].charAt(0) != "-") {
+            // console.log(obj[prop].charAt(0));
+            
+             scoresArray.push(parseFloat(obj[prop].charAt(0)));
+          }
         if (prop == "Score") {
           const valIWant = obj["Score"].charAt(0);
           scoresArray.push(parseFloat(valIWant));
@@ -79,8 +84,8 @@ module.exports = async (rawData, whichTest) => {
     "OutcomeThree"
   );
   const sumOutcomeFour = sumScoresAcrossOutcome(arrayOfStudents, "OutcomeFour");
-  console.log(`${whichTest}:`);
-  console.log("Number of students = ", arrayOfStudents.length);
+  console.log(`\n${whichTest}:`);
+  console.log("Number of students = ", arrayOfStudents.length, "");
   console.log(
     `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${possiblePoints} | Percentage ${
       sumOutcomeOne / possiblePoints

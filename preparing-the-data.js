@@ -1,20 +1,21 @@
 const csv = require("csvtojson");
 const regEx = /@.*$/; //using this regex throughout to remove '@emaildomain.com' because sometimes students mistakenly put @gmail.com instead of @rocky.edu
-
-// const OutcomeOneRange = {begin: 0, end: 5}
-// const OutcomeTwoRange = {begin: 5, end: 10}
-// const OutcomeThreeRange = {begin: 10, end: 15}
-// const OutcomeFourRange = {begin: 15, end: 20}
+ 
 
 module.exports = async function (preTestCSV, postTestCSV) {
-  /* Source files */
-  // const preTestCSV =
-  //   "./csv/Spring2021 - Library Prestest - ENG119Reynolds.csv";
-  // const postTestCSV =
-  //   "./csv/Spring2021 - Library Post-test - ENG119Reynolds.csv";
+ 
 
   const preTestJson = await csv().fromFile(preTestCSV);
   const postTestJson = await csv().fromFile(postTestCSV);
+  const fs = require("fs");
+  const data = JSON.stringify(preTestJson);
+  fs.writeFile("pre-test.json", data, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log("JSON data is saved.");
+  });
+
 
   const removeStudentsWhoDidNotTakeBothTests = (preTest, postTest) => {
     //pull all of the emails and make them uppercase and remove leading/trailing spaces.
