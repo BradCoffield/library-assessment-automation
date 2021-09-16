@@ -81,39 +81,64 @@ module.exports = async (rawData, whichTest) => {
     "OutcomeThree"
   );
   const sumOutcomeFour = sumScoresAcrossOutcome(arrayOfStudents, "OutcomeFour");
-  console.log(`\n${whichTest}:`);
-  console.log("Number of students = ", arrayOfStudents.length, "");
-  console.log(
-    `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${
-      arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange
-    } | Percentage ${
-      sumOutcomeOne /
-      (arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange)
-    }  `
-  );
-  console.log(
-    `OutcomeTwo: ${sumOutcomeTwo} | Out of a possible: ${
-      arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange
-    } | Percentage ${
-      sumOutcomeTwo /
-      (arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange)
-    }  `
-  );
 
-  console.log(
-    `OutcomeThree: ${sumOutcomeThree} | Out of a possible: ${
-      arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange
-    } | Percentage ${
-      sumOutcomeThree /
-      (arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange)
-    }  `
-  );
-  console.log(
-    `OutcomeFour: ${sumOutcomeFour} | Out of a possible: ${
-      arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange
-    } | Percentage ${
-      sumOutcomeFour /
-      (arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange)
-    }  `
-  );
+//   console.log(`\n${whichTest}:`);
+//   console.log("Number of students = ", arrayOfStudents.length, "");
+//   console.log(
+//     `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${
+//       arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange
+//     } | Percentage ${
+//       sumOutcomeOne /
+//       (arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange)
+//     }  `
+//   );
+//   console.log(
+//     `OutcomeTwo: ${sumOutcomeTwo} | Out of a possible: ${
+//       arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange
+//     } | Percentage ${
+//       sumOutcomeTwo /
+//       (arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange)
+//     }  `
+//   );
+
+//   console.log(
+//     `OutcomeThree: ${sumOutcomeThree} | Out of a possible: ${
+//       arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange
+//     } | Percentage ${
+//       sumOutcomeThree /
+//       (arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange)
+//     }  `
+//   );
+//   console.log(
+//     `OutcomeFour: ${sumOutcomeFour} | Out of a possible: ${
+//       arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange
+//     } | Percentage ${
+//       sumOutcomeFour /
+//       (arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange)
+//     }  `
+//   );
+  return {
+    whichTest,
+    numberOfStudents: arrayOfStudents.length,
+    outcomeOne: {
+      sum: sumOutcomeOne,
+      outOfPossible:
+        arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange,
+    },
+    outcomeTwo: {
+      sum: sumOutcomeTwo,
+      outOfPossible:
+        arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange,
+    },
+    outcomeThree: {
+      sum: sumOutcomeThree,
+      outOfPossible:
+        arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange,
+    },
+    outcomeFour: {
+      sum: sumOutcomeFour,
+      outOfPossible:
+        arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange,
+    },
+  };
 };
