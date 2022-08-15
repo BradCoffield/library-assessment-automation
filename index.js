@@ -20,11 +20,14 @@
   /* 
       Our source test results
   */
-  const preTestCSV = "./csv/RMC Library PreTest 2021 - Biology.csv";
-  const postTestCSV = "./csv/RMC Library PostTest 2021 - Biology.csv";
 
-  // const preTestCSV = "./csv/old/Spring2021 - Library Prestest - ENG119Reynolds.csv";
-  // const postTestCSV = "./csv/old/Spring2021 - Library Post-test - ENG119Reynolds.csv";
+      const preTestCSV = "./20212022csv/BioPreTest 2021.csv";
+      const postTestCSV = "./20212022csv/BioPostTest 2021.csv";
+
+            // const preTestCSV = "./20212022csv/ReynoldsPreSpring2022.csv";
+            // const postTestCSV = "./20212022csv/ReynoldsPostSpring2022.csv";
+
+  
 
   /* 
       This file does a fair bit:
