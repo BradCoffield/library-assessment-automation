@@ -82,41 +82,6 @@ module.exports = async (rawData, whichTest) => {
   );
   const sumOutcomeFour = sumScoresAcrossOutcome(arrayOfStudents, "OutcomeFour");
 
-//   console.log(`\n${whichTest}:`);
-//   console.log("Number of students = ", arrayOfStudents.length, "");
-//   console.log(
-//     `OutcomeOne: ${sumOutcomeOne} | Out of a possible: ${
-//       arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange
-//     } | Percentage ${
-//       sumOutcomeOne /
-//       (arrayOfStudents.length * OutcomeOneRange.totalQuestionsInRange)
-//     }  `
-//   );
-//   console.log(
-//     `OutcomeTwo: ${sumOutcomeTwo} | Out of a possible: ${
-//       arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange
-//     } | Percentage ${
-//       sumOutcomeTwo /
-//       (arrayOfStudents.length * OutcomeTwoRange.totalQuestionsInRange)
-//     }  `
-//   );
-
-//   console.log(
-//     `OutcomeThree: ${sumOutcomeThree} | Out of a possible: ${
-//       arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange
-//     } | Percentage ${
-//       sumOutcomeThree /
-//       (arrayOfStudents.length * OutcomeThreeRange.totalQuestionsInRange)
-//     }  `
-//   );
-//   console.log(
-//     `OutcomeFour: ${sumOutcomeFour} | Out of a possible: ${
-//       arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange
-//     } | Percentage ${
-//       sumOutcomeFour /
-//       (arrayOfStudents.length * OutcomeFourRange.totalQuestionsInRange)
-//     }  `
-//   );
   return {
     whichTest,
     numberOfStudents: arrayOfStudents.length,
