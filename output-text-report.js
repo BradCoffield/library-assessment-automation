@@ -51,6 +51,12 @@ let reportFileName = `./reports/${testMetadata.area} ${testMetadata.semester} ${
   }_${Date.now()}.md`;
   // console.log(content);
 
+  // Ensure reports directory exists before writing the file
+  const reportsDir = "./reports";
+  if (!fs.existsSync(reportsDir)) {
+    fs.mkdirSync(reportsDir, { recursive: true });
+  }
+
   try {
     const data = fs.writeFileSync(reportFileName, content);
     console.info("Report written successfully!");
